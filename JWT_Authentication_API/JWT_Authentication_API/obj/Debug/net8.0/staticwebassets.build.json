@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "Zhs9uGTB7CvNkUB1pmZ0jiWHvm47IVHwX3YKlpRqgJM=",
+  "Source": "JWT_Authentication_API",
+  "BasePath": "_content/JWT_Authentication_API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
