@@ -1,0 +1,123 @@
+<div class="row p-2 m-2 border-bottom">
+    <div class="col-9">
+        <h2 class="text-primary">Employee List</h2>
+    </div>
+    <div class="col-3">
+        <button class="btn btn-info form-control" (click)="ClearRec()" data-target="#newEmployee" data-toggle="modal" >
+            <i class="fa fa-plus"></i>&nbsp; Add New User
+        </button>
+    </div>
+</div>
+<div class="container-fluid p-2">
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Salary</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employeesList">
+            <td>{{employee.name}}</td>
+            <td>{{employee.address}}</td>
+            <td>{{employee.salary}}</td>
+            <td class="text-center">
+              <button class="btn btn-info" (click)="editClick(employee)" data-target="#editEmployee" data-toggle="modal">
+              <i class="fa fa-edit"></i>
+              </button>
+              <button class="btn btn-danger m-1" (click)="deleteClick(employee.id)">
+                <i class="fa fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+</div>
+<!-- New Employee -->
+<div class="modal" tabindex="-1" role="dialog" id="newEmployee">
+  <div class="modal-dialog" role="document">
+    <form #newEmpForm="ngForm" (ngSubmit)="saveClick()" class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">New Employee</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row">
+          <label class="col-4">Name</label>
+          <div class="col-8">
+            <input [(ngModel)]="newEmployee.name" name="name" required class="form-control" placeholder="Name" #name="ngModel"   pattern="^[a-zA-Z ]{2,30}$" />
+            <small class="text-danger" *ngIf="name.invalid && name.touched">Name is required</small>
+           <!-- <small class="text-danger" *ngIf="name.errors?.['pattern'] && name.touched">Name must be 2-30 letters only</small> -->
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-4">Address</label>
+          <div class="col-8">
+            <input [(ngModel)]="newEmployee.address" name="address" required class="form-control" placeholder="Address" #address="ngModel"   pattern="^[#.0-9a-zA-Z\s,-]+$" />
+            <small class="text-danger" *ngIf="address.invalid && address.touched">Address is required</small>
+            <!-- <small class="text-danger" *ngIf="address.errors?.['pattern'] && address.touched">Invalid address format</small> -->
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-4">Salary</label>
+          <div class="col-8">
+            <input [(ngModel)]="newEmployee.salary" name="salary" type="number" required min="1" class="form-control" placeholder="Salary" #salary="ngModel"   pattern="^[1-9][0-9]*$" />
+            <small class="text-danger" *ngIf="salary.invalid && salary.touched">Salary is required</small>
+            <!-- <small class="text-danger" *ngIf="salary.errors?.['pattern'] && salary.touched">Enter a valid salary</small> -->
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button [disabled]="newEmpForm.invalid" type="submit" class="btn btn-primary" data-dismiss="modal">Save</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- Edit Employee -->
+<div class="modal" tabindex="-1" role="dialog" id="editEmployee">
+  <div class="modal-dialog" role="document">
+    <form #editEmpForm="ngForm" (ngSubmit)="updateClick()" class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Employee</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row">
+          <label class="col-4">Name</label>
+          <div class="col-8">
+            <input [(ngModel)]="editEmployee.name" name="name" required class="form-control" placeholder="Name" #name="ngModel"  pattern="^[a-zA-Z ]{2,30}$" />
+            <small class="text-danger" *ngIf="name.invalid && name.touched">Name is required</small>
+            <!-- <small class="text-danger" *ngIf="name.errors?.['pattern'] && name.touched">Name must be 2-30 letters only</small> -->
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-4">Address</label>
+          <div class="col-8">
+            <input [(ngModel)]="editEmployee.address" name="address" required class="form-control" placeholder="Address" #address="ngModel" pattern="^[#.0-9a-zA-Z\s,-]+$" />
+            <small class="text-danger" *ngIf="address.invalid && address.touched">Address is required</small>
+            <!-- <small class="text-danger" *ngIf="address.errors?.['pattern'] && address.touched">Invalid address format</small> -->
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-4">Salary</label>
+          <div class="col-8">
+            <input [(ngModel)]="editEmployee.salary" name="salary" type="number" required min="1" class="form-control" placeholder="Salary" #salary="ngModel" pattern="^[1-9][0-9]*$" />
+            <small class="text-danger" *ngIf="salary.invalid && salary.touched">Salary is required</small>
+            <!-- <small class="text-danger" *ngIf="salary.errors?.['pattern'] && salary.touched">Enter a valid salary</small> -->
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button [disabled]="editEmpForm.invalid" type="submit" class="btn btn-primary" data-dismiss="modal">Save</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </form>
+  </div>
+</div>
