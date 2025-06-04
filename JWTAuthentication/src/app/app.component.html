@@ -22,6 +22,7 @@
       </li>
     </ul>
       <a *ngIf="this.loginService.currentUserName==''" class="btn btn-outline-success my-2 my-sm-0" routerLink="login" >Login</a>
+      <a *ngIf="this.loginService.currentUserName==''" class="btn btn-outline-success my-2 mx-1 my-sm-0"  routerLink="register" >Register</a>
       <a *ngIf="this.loginService.currentUserName !=''" class="btn btn-outline-success my-2 my-sm-0" (click)="logoutClick()" >LogOut</a>
   </div>
 </nav>

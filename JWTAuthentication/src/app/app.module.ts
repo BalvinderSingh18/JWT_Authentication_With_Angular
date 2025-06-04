@@ -14,6 +14,7 @@ import { JwtintercepterService } from './jwtintercepter.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import {JwtModule} from '@auth0/angular-jwt';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {JwtModule} from '@auth0/angular-jwt';
     AboutComponent,
     ContactComponent,
     LoginComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,

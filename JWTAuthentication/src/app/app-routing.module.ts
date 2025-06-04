@@ -6,6 +6,7 @@ import { ContactComponent } from './contact/contact.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { LoginComponent } from './login/login.component';
 import { ActivateguardService } from './activateguard.service';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {path:"",redirectTo:"home",pathMatch:"full"},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path:"contact",component:ContactComponent,canActivate:[ActivateguardService]},
   {path:"employee",component:EmployeeComponent,canActivate:[ActivateguardService]},
   {path:"login",component:LoginComponent},
+  {path:"register",component:RegisterComponent},
 ];
 
 @NgModule({

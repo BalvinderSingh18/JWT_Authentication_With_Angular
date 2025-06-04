@@ -1,0 +1,30 @@
+<div class="row p-2 m-2">
+    <div class="card text-center mx-auto">
+        <div class="card-header bg-info text-white">
+          Login
+        </div>
+        <div class="card-body">
+            <div class="form-group row">
+                <label class="col-4">UserName</label>
+                <div class="col-8">
+                    <input type="text" [(ngModel)]="user.username" name="username" class="form-control" placeholder="User Name" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-4">Email</label>
+                <div class="col-8">
+                    <input type="text" [(ngModel)]="user.email" name="username" class="form-control" placeholder="User Name" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-4">Password</label>
+                <div class="col-8">
+                    <input type="password" [(ngModel)]="user.password" name="Password" class="form-control" placeholder="Password" />
+                </div>
+            </div>
+        </div>
+        <div class="card-footer text-muted">
+          <button class="btn btn-info" (click)="RegisterClick()" >Register</button>
+        </div>
+      </div>
+</div>

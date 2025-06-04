@@ -16,7 +16,7 @@ export class LoginComponent {
   loginClick()
   {
     // alert(this.user.username)
-    this.loginService.CheckUser(this.user).subscribe(
+    this.loginService.login(this.user).subscribe(
       (response)=>{
         this.router.navigateByUrl("/home");
       },
